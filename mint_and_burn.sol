@@ -20,9 +20,14 @@ contract MyToken {
     // public variables here
     string public token_name="keerthan";
     string public token_abr="ker";
-    uint public token_supply = 0;
+    uint public token_supply;
     // mapping variable here
     mapping(address => uint) public balance; 
+
+    constructor(uint initial_supply) {
+        token_supply = initial_supply;
+        balance[msg.sender] = initial_supply;
+    }
     // mint function
     function mint(address _address, uint _value) public {
         token_supply += _value;
